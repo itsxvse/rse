@@ -29,7 +29,72 @@
 </head>
 
 <body>
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="loader-content">
+        <div class="loader-logo">_0rvse</div>
+        <div class="loader-line">
+            <span></span>
+        </div>
+        <p>INITIALIZING SYSTEM...</p>
+    </div>
+</div>
 
+<!-- CURSOR GLOW -->
+<div class="cursor-glow"></div>
+
+<!-- COMMAND PALETTE -->
+<div class="command-overlay" id="commandOverlay">
+    <div class="command-box">
+
+        <div class="command-header">
+            <i class="fa-solid fa-terminal"></i>
+            <input
+                type="text"
+                id="commandInput"
+                placeholder="Search or type a command..."
+                autocomplete="off"
+            >
+            <kbd>ESC</kbd>
+        </div>
+
+        <div class="command-items">
+
+            <a href="#home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="#about">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="#skills">
+                <i class="fa-solid fa-code"></i>
+                <span>Skills</span>
+            </a>
+
+            <a href="#projects">
+                <i class="fa-solid fa-folder"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="#contact">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact</span>
+            </a>
+
+        </div>
+
+        <div class="command-footer">
+            <span><kbd>↑↓</kbd> Navigate</span>
+            <span><kbd>ENTER</kbd> Open</span>
+            <span><kbd>ESC</kbd> Close</span>
+        </div>
+
+    </div>
+</div>
     <!-- =========================
          BACKGROUND
     ========================== -->
