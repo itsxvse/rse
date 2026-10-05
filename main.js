@@ -346,6 +346,172 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(
         "%cWelcome to the system.",
         "color:#69bdff;font-size:14px;"
-    );
+    );/* =========================
+   PRELOADER
+========================= */
+
+window.addEventListener("load", () => {
+
+    const preloader =
+        document.getElementById("preloader");
+
+    if (preloader) {
+
+        setTimeout(() => {
+
+            preloader.classList.add("loaded");
+
+        }, 700);
+
+    }
+
+});
+
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+const cursorGlow =
+    document.querySelector(".cursor-glow");
+
+if (cursorGlow && window.innerWidth > 900) {
+
+    document.addEventListener("mousemove", event => {
+
+        cursorGlow.style.left =
+            `${event.clientX}px`;
+
+        cursorGlow.style.top =
+            `${event.clientY}px`;
+
+    });
+
+}
+
+
+/* =========================
+   COMMAND PALETTE
+   CTRL + K / CMD + K
+========================= */
+
+const commandOverlay =
+    document.getElementById("commandOverlay");
+
+const commandInput =
+    document.getElementById("commandInput");
+
+const commandItems =
+    document.querySelectorAll(".command-items a");
+
+
+function openCommandPalette() {
+
+    if (!commandOverlay) return;
+
+    commandOverlay.classList.add("open");
+
+    setTimeout(() => {
+
+        commandInput?.focus();
+
+    }, 100);
+
+}
+
+
+function closeCommandPalette() {
+
+    if (!commandOverlay) return;
+
+    commandOverlay.classList.remove("open");
+
+    if (commandInput) {
+        commandInput.value = "";
+    }
+
+}
+
+
+document.addEventListener("keydown", event => {
+
+    if (
+        (event.ctrlKey || event.metaKey) &&
+        event.key.toLowerCase() === "k"
+    ) {
+
+        event.preventDefault();
+
+        openCommandPalette();
+
+    }
+
+
+    if (event.key === "Escape") {
+
+        closeCommandPalette();
+
+    }
+
+});
+
+
+/* Close when clicking outside */
+
+commandOverlay?.addEventListener(
+    "click",
+    event => {
+
+        if (event.target === commandOverlay) {
+
+            closeCommandPalette();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COMMAND SEARCH
+========================= */
+
+commandInput?.addEventListener(
+    "input",
+    () => {
+
+        const search =
+            commandInput.value
+                .toLowerCase()
+                .trim();
+
+        commandItems.forEach(item => {
+
+            const text =
+                item.textContent
+                    .toLowerCase();
+
+            item.style.display =
+                text.includes(search)
+                    ? "flex"
+                    : "none";
+
+        });
+
+    }
+);
+
+
+/* Close palette after navigation */
+
+commandItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        closeCommandPalette();
+
+    });
+
+});
 
 });
